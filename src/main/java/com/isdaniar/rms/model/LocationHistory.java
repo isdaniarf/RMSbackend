@@ -6,11 +6,11 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Created by Isdaniar_F on 24/03/2017.
+ * Created by Isdaniar_F on 27/03/2017.
  */
 
 @Entity
-public class EmploymentHistory {
+public class LocationHistory {
 
     @Id
     @GeneratedValue(generator = "uuid")
@@ -19,9 +19,8 @@ public class EmploymentHistory {
 
     private Date startDate;
     private Date endDate;
-    private String position;
-    private String institution;
-    private String jobDescription;
+    private String city;
+    private String address;
 
     @ManyToOne
     @JoinColumn
@@ -51,27 +50,19 @@ public class EmploymentHistory {
         this.endDate = endDate;
     }
 
-    public String getPosition() {
-        return position;
+    public String getCity() {
+        return city;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public String getInstitution() {
-        return institution;
+    public String getAddress() {
+        return address;
     }
 
-    public void setInstitution(String institution) {
-        this.institution = institution;
-    }
-
-    public String getJobDescription() {
-        return jobDescription;
-    }
-
-    public void setJobDescription(String jobDescription) {
-        this.jobDescription = jobDescription;
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

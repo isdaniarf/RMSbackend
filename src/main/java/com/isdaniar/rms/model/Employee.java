@@ -1,10 +1,12 @@
 package com.isdaniar.rms.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import graphql.annotations.GraphQLField;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 //import java.util.UUID;
 
 
@@ -18,7 +20,6 @@ public class Employee {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-//    @Column(columnDefinition = "BINARY(16)")
     private String Id;
 
     private String firstName;
@@ -29,6 +30,18 @@ public class Employee {
     private String grade;
     private String division;
     private String subdivision;
+
+    @OneToMany(mappedBy = "dependentTo")
+    private List<EmployeeDependants> dependants;
+
+    @OneToMany(mappedBy = "employee")
+    private List<EmploymentHistory> employmentHistory;
+
+    @OneToMany(mappedBy = "employee")
+    private List<LocationHistory> locationHistory;
+
+    @OneToMany(mappedBy = "employee")
+    private List<GradeHistory> gradeHistory;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date dob;
@@ -186,5 +199,37 @@ public class Employee {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public List<EmployeeDependants> getDependants() {
+        return dependants;
+    }
+
+    public void setDependants(List<EmployeeDependants> dependants) {
+        this.dependants = dependants;
+    }
+
+    public List<EmploymentHistory> getEmploymentHistory() {
+        return employmentHistory;
+    }
+
+    public void setEmploymentHistory(List<EmploymentHistory> employmentHistory) {
+        this.employmentHistory = employmentHistory;
+    }
+
+    public List<LocationHistory> getLocationHistory() {
+        return locationHistory;
+    }
+
+    public void setLocationHistory(List<LocationHistory> locationHistory) {
+        this.locationHistory = locationHistory;
+    }
+
+    public List<GradeHistory> getGradeHistory() {
+        return gradeHistory;
+    }
+
+    public void setGradeHistory(List<GradeHistory> gradeHistory) {
+        this.gradeHistory = gradeHistory;
     }
 }
