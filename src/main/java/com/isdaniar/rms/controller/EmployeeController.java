@@ -13,8 +13,8 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/app")
-public class MainController {
+@RequestMapping("/employee")
+public class EmployeeController {
 
     @Autowired
     private EmployeeRepository employeeRepository;
@@ -37,7 +37,7 @@ public class MainController {
     }
 
     @GetMapping("/search")
-    public @ResponseBody Iterable<Employee> searchByName() {
-        return employeeRepository.findAll();
+    public @ResponseBody Iterable<Employee> searchByName(@RequestParam(value="name", required=true, defaultValue = "") String name) {
+        return employeeRepository.findByName(name);
     }
 }

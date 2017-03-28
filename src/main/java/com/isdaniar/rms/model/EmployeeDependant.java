@@ -1,5 +1,8 @@
 package com.isdaniar.rms.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -10,7 +13,7 @@ import java.util.Date;
  */
 
 @Entity
-public class EmployeeDependants {
+public class EmployeeDependant {
 
     @Id
     @GeneratedValue(generator = "uuid")
@@ -21,11 +24,14 @@ public class EmployeeDependants {
     private String lastName;
     private String Gender;
     private String dependantType;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date dob;
     private boolean active;
 
     @ManyToOne
     @JoinColumn
+    @JsonBackReference
     private Employee dependentTo;
 
     public Employee getDependentTo() {

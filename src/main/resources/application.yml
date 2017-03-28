@@ -1,0 +1,21 @@
+spring:
+    jpa:
+      hibernate:
+        ddl-auto: update
+    datasource:
+        url: jdbc:mysql://localhost:3306/RMSapp
+        username: root
+        password: dcnhyy2738
+
+#security:
+#  oauth2:
+#    client:
+#      clientId: 1814989392160520
+#      clientSecret: d75f055306a18c264d1cf8c582626118
+#      accessTokenUri: https://graph.facebook.com/oauth/access_token
+#      userAuthorizationUri: https://www.facebook.com/dialog/oauth
+#      tokenName: oauth_token
+#      authenticationScheme: query
+#      clientAuthenticationScheme: form
+#    resource:
+#      userInfoUri: https://graph.facebook.com/me

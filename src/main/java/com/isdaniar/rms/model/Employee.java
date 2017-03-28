@@ -1,7 +1,7 @@
 package com.isdaniar.rms.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import graphql.annotations.GraphQLField;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -32,7 +32,8 @@ public class Employee {
     private String subdivision;
 
     @OneToMany(mappedBy = "dependentTo")
-    private List<EmployeeDependants> dependants;
+    @JsonManagedReference
+    private List<EmployeeDependant> dependants;
 
     @OneToMany(mappedBy = "employee")
     private List<EmploymentHistory> employmentHistory;
@@ -201,11 +202,11 @@ public class Employee {
         this.avatar = avatar;
     }
 
-    public List<EmployeeDependants> getDependants() {
+    public List<EmployeeDependant> getDependants() {
         return dependants;
     }
 
-    public void setDependants(List<EmployeeDependants> dependants) {
+    public void setDependants(List<EmployeeDependant> dependants) {
         this.dependants = dependants;
     }
 

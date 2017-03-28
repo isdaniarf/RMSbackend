@@ -10,8 +10,8 @@ import java.util.List;
 /**
  * Created by Isdaniar_F on 23/03/2017.
  */
-public interface EmployeeRepository extends CrudRepository<Employee, Long> {
+public interface EmployeeRepository extends CrudRepository<Employee, String> {
 
-    @Query("SELECT e from Employee e where firstName like ('%'+:searchKey+'%') or lastName like ('%'+:searchKey+'%')")
+    @Query("SELECT e from Employee e where e.firstName like %?1% or e.lastName like %?1%")
     List<Employee> findByName(@Param("searchKey") String searchKey);
 }
